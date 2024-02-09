@@ -1,22 +1,24 @@
 #include <Arduino.h>
+#include <Bounce2.h>
+#include <vector>
 #include "main.h"
-
-const int led = 2;
-const int MORSE_KEY_PIN = 29;
-const int DEBOUNCE_THRESHOLD = 50; // milliseconds
-
-volatile Event last_event = {0, LOW};
+#include "Morse.h"
 
 
+std::vector<Event> events;
 
+std::vector<MorseSymbol> symbols;
 
-void interruptServiceRoutine();
+Bounce2::Button button = Bounce2::Button();
+
 
 void setup()
 {
     pinMode(led, OUTPUT);
-    pinMode(MORSE_KEY_PIN, INPUT);
-    attachInterrupt(digitalPinToInterrupt(MORSE_KEY_PIN), interruptServiceRoutine, CHANGE);
+
+    button.attach(MORSE_KEY_PIN, INPUT_PULLUP);
+    button.interval(5);
+    button.setPressedState(LOW);
 
 
     Serial.begin(9600);
@@ -25,26 +27,42 @@ void setup()
 
 void loop()
 {
-    unsigned long last_update = 0;
+    input_morse_key();
 
-    while (true)
+    // for (const auto& symbol : symbols)
+    // {
+    //     Serial.print(toString(symbol));
+    // }
+    // Serial.println("");
+}
+
+void input_morse_key()
+{
+    button.update();
+    if (button.released())
     {
-        while (last_event.instant == last_update);
-        digitalWrite(led, !last_event.status);
-        Serial.print(last_event.instant);
-        Serial.print("\t");
-        Serial.println(last_event.instant-last_update);
-        last_update = last_event.instant;
+        on_event({
+            button.previousDuration(),
+            HIGH
+        });
+    }
+
+    if (button.pressed())
+    {
+        on_event({
+            button.previousDuration(),
+            LOW
+        });
     }
 }
 
-
-void interruptServiceRoutine()
+void on_event(Event event)
 {
-    unsigned long now = millis();
-    if (now - last_event.instant > DEBOUNCE_THRESHOLD)
+    MorseSymbol symbol = parse_morse_symbol(event);
+    if (symbol != None)
     {
-        last_event.instant = now;
-        last_event.status = digitalRead(MORSE_KEY_PIN);
+        Serial.print(toString(symbol));
+        symbols.push_back(symbol);
+        digitalWrite(led, event.status);
     }
 }
