@@ -3,6 +3,7 @@
 #include <Adafruit_NeoPixel.h>
 #include "Debug.h"
 #include "USBKeyboard.h"
+#include "MorseDecoder.h"
 
 
 constexpr int MORSE_KEY_PIN = 29;
@@ -12,6 +13,10 @@ Adafruit_NeoPixel pixels(1, 16, NEO_GRB + NEO_KHZ800);
 Debug debug(&pixels);
 
 USBKeyboard keyboard;
+
+void on_char(char c);
+void on_symbol(Symbol symbol);
+MorseDecoder morse_decoder(&on_symbol, &on_char);
 
 void setup()
 {
@@ -26,18 +31,36 @@ void setup()
     Serial.begin(9600);
     Serial.println("Interrupt Example");
     debug.okay();
+
+    // keyboard.printf("Hallo");
 }
 
 
 void loop()
 {
     button.update();
+    morse_decoder.update();
     // debug.okay();
     if (button.pressed())
     {
-        // keyboard.printf("Hallo");
-        debug.info();
+        morse_decoder.released(button.previousDuration());
     }
+    if (button.released())
+    {
+        morse_decoder.pressed(button.previousDuration());
+    }
+}
+
+void on_symbol(Symbol symbol)
+{
+    Serial.print("Symbol ");
+    Serial.println(symbol_to_char(symbol));
+}
+
+void on_char(char c)
+{
+    Serial.print("Char ");
+    Serial.println(c);
 }
 
 
