@@ -49,6 +49,10 @@ void loop()
     {
         morse_decoder.pressed(button.previousDuration());
     }
+    if(!button.isPressed() && button.currentDuration() > morse_decoder.get_timeout())
+    {
+        morse_decoder.timeout();
+    }
 }
 
 void on_symbol(Symbol symbol)

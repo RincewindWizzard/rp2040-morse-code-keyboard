@@ -129,6 +129,11 @@ public:
         return dit_duration;
     }
 
+    time_t get_timeout()
+    {
+        return get_dah_duration() * 2;
+    }
+
     void update()
     {
     }
@@ -141,7 +146,6 @@ public:
             symbol_buffer.push_back(symbol);
             on_symbol(symbol);
         }
-        // on_char('$');
     }
 
     void released(time_t duration)
@@ -156,6 +160,16 @@ public:
             {
                 on_char(c);
             }
+        }
+    }
+
+    void timeout()
+    {
+        char c = parse_char(symbol_buffer);
+        symbol_buffer.clear();
+        if (c != 0)
+        {
+            on_char(c);
         }
     }
 };
