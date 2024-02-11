@@ -22,7 +22,7 @@ void setup()
 {
     button.attach(MORSE_KEY_PIN, INPUT_PULLUP);
     button.interval(5);
-    button.setPressedState(LOW);
+    button.setPressedState(HIGH);
 
     pixels.begin();
     pixels.show();
@@ -53,55 +53,18 @@ void loop()
 
 void on_symbol(Symbol symbol)
 {
-    Serial.print("Symbol ");
-    Serial.println(symbol_to_char(symbol));
+    Serial.print(symbol_to_char(symbol));
 }
 
 void on_char(char c)
 {
-    Serial.print("Char ");
-    Serial.println(c);
+    if(c != '\t')
+    {
+        Serial.print(c);
+    }
+    else
+    {
+        Serial.print("  ");
+    }
 }
 
-
-// void loop()
-// {
-//     input_morse_key();
-//
-//     // for (const auto& symbol : symbols)
-//     // {
-//     //     Serial.print(toString(symbol));
-//     // }
-//     // Serial.println("");
-// }
-
-// void input_morse_key()
-// {
-//     button.update();
-//     if (button.released())
-//     {
-//         on_event({
-//             button.previousDuration(),
-//             HIGH
-//         });
-//     }
-//
-//     if (button.pressed())
-//     {
-//         on_event({
-//             button.previousDuration(),
-//             LOW
-//         });
-//     }
-// }
-//
-// void on_event(Event event)
-// {
-//     MorseSymbol symbol = parse_morse_symbol(event);
-//     if (symbol != None)
-//     {
-//         Serial.print(toString(symbol));
-//         symbols.push_back(symbol);
-//         digitalWrite(led, event.status);
-//     }
-// }
