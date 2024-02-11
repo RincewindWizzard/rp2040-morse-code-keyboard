@@ -7,13 +7,13 @@
 #define DEBUG_H
 #include <Adafruit_NeoPixel.h>
 
-class Debug
+class DebugLED
 {
 private:
     Adafruit_NeoPixel* pixels;
 
 public:
-    Debug(Adafruit_NeoPixel* pixels) : pixels(pixels)
+    DebugLED(Adafruit_NeoPixel* pixels) : pixels(pixels)
     {
     }
 
@@ -25,8 +25,7 @@ public:
             pixels->show();
             delay(interval);
 
-            pixels->setPixelColor(0, Adafruit_NeoPixel::Color(0, 0, 0));
-            pixels->show();
+            clear();
             delay(interval);
         }
     }
@@ -44,6 +43,18 @@ public:
     void error()
     {
         blink(Adafruit_NeoPixel::Color(255, 0, 0), 300, 3);
+    }
+
+    void set_error()
+    {
+        pixels->setPixelColor(0, Adafruit_NeoPixel::Color(255, 0, 0));
+        pixels->show();
+    }
+
+    void clear()
+    {
+        pixels->setPixelColor(0, Adafruit_NeoPixel::Color(0, 0, 0));
+        pixels->show();
     }
 };
 

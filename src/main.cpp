@@ -1,7 +1,7 @@
 #include <Arduino.h>
 #include <Bounce2.h>
 #include <Adafruit_NeoPixel.h>
-#include "Debug.h"
+#include "DebugLED.h"
 #include "USBKeyboard.h"
 #include "MorseDecoder.h"
 
@@ -10,13 +10,15 @@ constexpr int MORSE_KEY_PIN = 29;
 Bounce2::Button button = Bounce2::Button();
 Adafruit_NeoPixel pixels(1, 16, NEO_GRB + NEO_KHZ800);
 
-Debug debug(&pixels);
+DebugLED debug(&pixels);
 
 USBKeyboard keyboard;
 
 void on_char(char c);
 void on_symbol(Symbol symbol);
-MorseDecoder morse_decoder(&on_symbol, &on_char);
+void on_fail();
+
+MorseDecoder morse_decoder(&on_symbol, &on_char, &on_fail);
 
 void setup()
 {
@@ -31,8 +33,6 @@ void setup()
     Serial.begin(9600);
     Serial.println("Interrupt Example");
     debug.okay();
-
-    //
 }
 
 
@@ -43,10 +43,12 @@ void loop()
     // debug.okay();
     if (button.pressed())
     {
+        debug.clear();
         morse_decoder.released(button.previousDuration());
     }
     if (button.released())
     {
+        debug.clear();
         morse_decoder.pressed(button.previousDuration());
     }
     if (!button.isPressed() && button.currentDuration() > morse_decoder.get_timeout())
@@ -62,6 +64,17 @@ void on_symbol(Symbol symbol)
 
 void on_char(char c)
 {
+    // qwerty, dont ask me....
+    if(c == 'y')
+    {
+        c = 'z';
+    }
+    if(c == 'z')
+    {
+        c = 'y';
+    }
+    //-----------------------
+
     if (c != '\t')
     {
         keyboard.printf("%c", c);
@@ -70,4 +83,9 @@ void on_char(char c)
     {
         keyboard.printf("  ");
     }
+}
+
+void on_fail()
+{
+    debug.set_error();
 }

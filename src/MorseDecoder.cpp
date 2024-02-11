@@ -13,6 +13,7 @@ MorseCodePoint MORSE_CODE_TABLE[MORSE_CODE_TABLE_SIZE] = {
     {'7', {Symbol::DAH, Symbol::DAH, Symbol::DIT, Symbol::DIT, Symbol::DIT}},
     {'8', {Symbol::DAH, Symbol::DAH, Symbol::DAH, Symbol::DIT, Symbol::DIT}},
     {'9', {Symbol::DAH, Symbol::DAH, Symbol::DAH, Symbol::DAH, Symbol::DIT}},
+    {'0', {Symbol::DAH, Symbol::DAH, Symbol::DAH, Symbol::DAH, Symbol::DAH}},
     {'a', {Symbol::DIT, Symbol::DAH, Symbol::NONE, Symbol::NONE, Symbol::NONE}},
     {'b', {Symbol::DAH, Symbol::DIT, Symbol::DIT, Symbol::DIT, Symbol::NONE}},
     {'c', {Symbol::DAH, Symbol::DIT, Symbol::DAH, Symbol::DIT, Symbol::NONE}},

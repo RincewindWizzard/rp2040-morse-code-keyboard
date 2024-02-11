@@ -47,6 +47,7 @@ char symbol_to_char(Symbol symbol);
 
 using OnSymbolCb = void (*)(Symbol);
 using OnCharCb = void (*)(char);
+using OnFailCb = void (*)();
 
 class MorseDecoder
 {
@@ -54,6 +55,7 @@ private:
     std::vector<Symbol> symbol_buffer;
     OnSymbolCb on_symbol;
     OnCharCb on_char;
+    OnFailCb on_fail;
     time_t dit_duration = 120;
 
     time_t dit_dah_threshold()
@@ -101,7 +103,8 @@ private:
         for (int i = 0; i < MORSE_CODE_TABLE_SIZE; i++)
         {
             MorseCodePoint code_point = MORSE_CODE_TABLE[i];
-            bool matches = code_point.symbols[symbol_buffer.size()] == Symbol::NONE;
+            bool matches = symbol_buffer.size() == MORSE_CODE_MAX_LEN ||
+                code_point.symbols[symbol_buffer.size()] == Symbol::NONE;
             for (unsigned int j = 0; j < symbol_buffer.size() && matches; j++)
             {
                 matches &= symbol_buffer[j] == code_point.symbols[j];
@@ -115,7 +118,8 @@ private:
     }
 
 public:
-    explicit MorseDecoder(OnSymbolCb on_symbol, OnCharCb on_char) : on_symbol(on_symbol), on_char(on_char)
+    explicit MorseDecoder(OnSymbolCb on_symbol, OnCharCb on_char, OnFailCb on_fail) : on_symbol(on_symbol),
+        on_char(on_char), on_fail(on_fail)
     {
     }
 
@@ -160,16 +164,28 @@ public:
             {
                 on_char(c);
             }
+            else
+            {
+                on_fail();
+            }
         }
     }
 
     void timeout()
     {
-        char c = parse_char(symbol_buffer);
-        symbol_buffer.clear();
-        if (c != 0)
+        if (!symbol_buffer.empty())
         {
-            on_char(c);
+            char c = parse_char(symbol_buffer);
+            symbol_buffer.clear();
+            if (c != 0)
+            {
+                on_char(c);
+            }
+            else
+            {
+                on_fail();
+            }
+            on_char(' ');
         }
     }
 };
