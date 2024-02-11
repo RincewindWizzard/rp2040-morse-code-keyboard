@@ -1,8 +1,11 @@
 #include <Arduino.h>
 #include <Bounce2.h>
+#include <Adafruit_NeoPixel.h>
 #include <vector>
 #include "main.h"
 #include "Morse.h"
+#include "Debug.h"
+
 
 
 std::vector<Event> events;
@@ -10,7 +13,8 @@ std::vector<Event> events;
 std::vector<MorseSymbol> symbols;
 
 Bounce2::Button button = Bounce2::Button();
-
+Adafruit_NeoPixel pixels(1, 16, NEO_GRB + NEO_KHZ800);
+Debug debug(&pixels);
 
 void setup()
 {
@@ -20,21 +24,35 @@ void setup()
     button.interval(5);
     button.setPressedState(LOW);
 
+    pixels.begin();
+    pixels.show();
+
 
     Serial.begin(9600);
     Serial.println("Interrupt Example");
+    debug.okay();
 }
+
+
+
 
 void loop()
 {
-    input_morse_key();
-
-    // for (const auto& symbol : symbols)
-    // {
-    //     Serial.print(toString(symbol));
-    // }
-    // Serial.println("");
+    button.update();
+    // debug.okay();
 }
+
+
+// void loop()
+// {
+//     input_morse_key();
+//
+//     // for (const auto& symbol : symbols)
+//     // {
+//     //     Serial.print(toString(symbol));
+//     // }
+//     // Serial.println("");
+// }
 
 void input_morse_key()
 {
