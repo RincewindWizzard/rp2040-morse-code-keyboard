@@ -8,6 +8,7 @@
 #include <MorseDecoder.h>
 #include <vector>
 
+
 enum Status
 {
     OFF,
@@ -28,6 +29,19 @@ enum class Symbol
     PAUSE_LONG,
     NONE
 };
+
+#define MORSE_CODE_MAX_LEN 5
+
+struct MorseCodePoint
+{
+    char c;
+    Symbol symbols[MORSE_CODE_MAX_LEN];
+};
+
+#define MORSE_CODE_TABLE_SIZE 36
+
+extern MorseCodePoint MORSE_CODE_TABLE[];
+
 
 char symbol_to_char(Symbol symbol);
 
@@ -80,6 +94,23 @@ private:
 
     char parse_char(std::vector<Symbol> symbol_buffer)
     {
+        if (symbol_buffer.size() > MORSE_CODE_MAX_LEN)
+        {
+            return 0;
+        }
+        for (int i = 0; i < MORSE_CODE_TABLE_SIZE; i++)
+        {
+            MorseCodePoint code_point = MORSE_CODE_TABLE[i];
+            bool matches = code_point.symbols[symbol_buffer.size()] == Symbol::NONE;
+            for (unsigned int j = 0; j < symbol_buffer.size() && matches; j++)
+            {
+                matches &= symbol_buffer[j] == code_point.symbols[j];
+            }
+            if (matches)
+            {
+                return code_point.c;
+            }
+        }
         return 0;
     }
 
