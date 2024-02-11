@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="a74e8c23-587e-4dda-a879-cab949d928ef" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/rp2040-morse-code-keyboard.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scripts/deploy.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/boot_out.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/code.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lib/adafruit_hid/__init__.mpy" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lib/adafruit_hid/consumer_control.mpy" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lib/adafruit_hid/consumer_control_code.mpy" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lib/adafruit_hid/keyboard.mpy" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lib/adafruit_hid/keyboard_layout_base.mpy" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lib/adafruit_hid/keyboard_layout_us.mpy" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lib/adafruit_hid/keycode.mpy" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lib/adafruit_hid/mouse.mpy" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lib/adafruit_neopxl8.mpy" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lib/adafruit_pioasm.mpy" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lib/adafruit_pixelbuf.mpy" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/settings.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/README" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/README" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platformio.ini" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Morse.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Morse.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/README" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
+  <component name="ProjectId" id="2cDZWDCQwYqDF9liKyWRqrtcZPG" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.deploy.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "feature/Circuitpython",
+    "last_opened_file_path": "/home/dfl/Programmierung/rp2040-morse-code-keyboard/scripts/deploy.py",
+    "settings.editor.selected.configurable": "serialmonitor.settings"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/circuitpython" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="deploy" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="rp2040-morse-code-keyboard" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="SDK_NAME" value="Poetry (rp2040-morse-code-keyboard)" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/scripts/deploy.py" />
+      <option name="PARAMETERS" value="deploy_monitor /run/media/dfl/CIRCUITPY /dev/ttyACM0" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-python-sdk-5a2391486177-d3b881c8e49f-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-233.13763.11" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a74e8c23-587e-4dda-a879-cab949d928ef" name="Changes" comment="" />
+      <created>1707648138547</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1707648138547</updated>
+    </task>
+    <servers />
+  </component>
+</project>

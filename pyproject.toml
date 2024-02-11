@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "rp2040-morse-code-keyboard"
+version = "0.1.0"
+description = "A morsecode key which acts as input device parsing morse code to keyboard inputs. Emulates a USB HID Keyboard."
+authors = ["RincewindWizzard <git@magierdinge.de>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+circuitpython-stubs = "^8.2.9"
+fire = "^0.5.0"
+loguru = "^0.7.2"
+pyserial = "^3.5"
+
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+
+[tool.poetry.scripts]
+deploy = "scripts.deploy:main"
