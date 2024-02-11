@@ -32,7 +32,7 @@ void setup()
     Serial.println("Interrupt Example");
     debug.okay();
 
-    // keyboard.printf("Hallo");
+    //
 }
 
 
@@ -49,7 +49,7 @@ void loop()
     {
         morse_decoder.pressed(button.previousDuration());
     }
-    if(!button.isPressed() && button.currentDuration() > morse_decoder.get_timeout())
+    if (!button.isPressed() && button.currentDuration() > morse_decoder.get_timeout())
     {
         morse_decoder.timeout();
     }
@@ -62,13 +62,12 @@ void on_symbol(Symbol symbol)
 
 void on_char(char c)
 {
-    if(c != '\t')
+    if (c != '\t')
     {
-        Serial.print(c);
+        keyboard.printf("%c", c);
     }
     else
     {
-        Serial.print("  ");
+        keyboard.printf("  ");
     }
 }
-
