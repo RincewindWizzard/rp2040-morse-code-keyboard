@@ -5,6 +5,7 @@
 #include "main.h"
 #include "Morse.h"
 #include "Debug.h"
+#include "USBKeyboard.h"
 
 
 
@@ -14,7 +15,10 @@ std::vector<MorseSymbol> symbols;
 
 Bounce2::Button button = Bounce2::Button();
 Adafruit_NeoPixel pixels(1, 16, NEO_GRB + NEO_KHZ800);
+
 Debug debug(&pixels);
+
+USBKeyboard keyboard;
 
 void setup()
 {
@@ -28,18 +32,22 @@ void setup()
     pixels.show();
 
 
+
     Serial.begin(9600);
     Serial.println("Interrupt Example");
     debug.okay();
 }
 
 
-
-
 void loop()
 {
     button.update();
     // debug.okay();
+    if (button.pressed())
+    {
+        debug.info();
+        keyboard.printf("Hallo");
+    }
 }
 
 
