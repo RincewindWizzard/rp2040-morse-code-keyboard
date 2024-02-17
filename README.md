@@ -40,5 +40,9 @@ to build and upload this code.
 
 Schematics, PCB layout and 3d models will be found in the [CAD](./CAD/) folder once they are ready.
 
+There is already a Fusion 360 [3D model of the key](./CAD/morse_key.f3d),
+a [STEP File](./CAD/morse_key.step) 
+and a [drawing of the drill hole positions](./CAD/morse_key_drilll_holes.pdf).
+
 
 
