@@ -38,7 +38,7 @@ to build and upload this code.
 
 ## Build PCB
 
-Schematics, PCB layout and 3d models will be found in the [CAD](./kicad/) folder once they are ready.
+Schematics, PCB layout and 3d models will be found in the [CAD](./CAD/) folder once they are ready.
 
 
 
