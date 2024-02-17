@@ -41,8 +41,14 @@ to build and upload this code.
 Schematics, PCB layout and 3d models will be found in the [CAD](./CAD/) folder once they are ready.
 
 There is already a Fusion 360 [3D model of the key](./CAD/morse_key.f3d),
-a [STEP File](./CAD/morse_key.step) 
+a [STEP File](./CAD/morse_key.step)
 and a [drawing of the drill hole positions](./CAD/morse_key_drilll_holes.pdf).
+
+Here is a rendering of the pcb with the mechanical key and the rp2040 zero mounted on.
+![3D PCB with components](./images/morse_key_pcb_0002_3d.jpg)
+The pin headers are for further debugging and modification.
+
+The [STEP file for rp2040 zero](https://grabcad.com/library/rp2040-zero-2) is from grabcad.com.
 
 
 
