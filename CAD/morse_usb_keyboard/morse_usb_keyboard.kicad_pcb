@@ -5,6 +5,12 @@
   )
 
   (paper "A4")
+  (title_block
+    (title "Morse Key PCB")
+    (date "2024-02-17")
+    (rev "1")
+  )
+
   (layers
     (0 "F.Cu" signal)
     (31 "B.Cu" signal)
@@ -39,6 +45,7 @@
 
   (setup
     (pad_to_mask_clearance 0)
+    (aux_axis_origin 95 108)
     (pcbplotparams
       (layerselection 0x00010fc_ffffffff)
       (plot_on_all_layers_selection 0x0000000_00000000)
@@ -69,7 +76,7 @@
       (subtractmaskfromsilk false)
       (outputformat 1)
       (mirror false)
-      (drillshape 1)
+      (drillshape 0)
       (scaleselection 1)
       (outputdirectory "")
     )
@@ -234,6 +241,11 @@
       (net 2 "Net-(J1-Pin_2)") (pinfunction "C") (pintype "passive") (tstamp bbbf45e1-cced-4126-b9e8-d2a4fa07085d))
     (pad "3" thru_hole roundrect (at 67.58 -4.4) (size 7 7) (drill 3) (layers "*.Cu" "*.Mask") (roundrect_rratio 0.25)
       (net 2 "Net-(J1-Pin_2)") (pinfunction "C") (pintype "passive") (tstamp fe9f29b6-b38c-44f8-94d9-cdd322ca635e))
+    (model "/home/dfl/Programmierung/rp2040-morse-code-keyboard-cpp/CAD/morse_key.step"
+      (offset (xyz -11 -1.5 -8.5))
+      (scale (xyz 1 1 1))
+      (rotate (xyz -90 0 0))
+    )
   )
 
   (footprint "Connector_PinSocket_2.54mm:PinSocket_1x08_P2.54mm_Vertical" (layer "F.Cu")
@@ -507,6 +519,11 @@
       (net 11 "GND") (pinfunction "GND") (pintype "power_out") (tstamp 276c184e-4234-4c53-a95f-5e94d7a33559))
     (pad "23" thru_hole oval (at -7.62 -10.16 90) (size 2.5 1.5) (drill 1 (offset -0.5 0)) (layers "*.Cu" "*.Mask")
       (net 24 "unconnected-(U1-5V-Pad23)") (pinfunction "5V") (pintype "power_out") (tstamp 055e2bde-c47b-4ecd-b5a0-20f415a12717))
+    (model "${KIPRJMOD}/morse_keyboard.pretty/RP2040-ZERO-WAVESHARE with headers.STEP"
+      (offset (xyz 0 0 2.5))
+      (scale (xyz 1 1 1))
+      (rotate (xyz -90 0 0))
+    )
   )
 
   (gr_rect (start 95 52) (end 175 108)
